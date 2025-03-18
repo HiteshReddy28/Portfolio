@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/11da848d2d.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Hitesh Reddy Buereddy</title>
+
+</head>
+
+<body>
+    <div id="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text" id="greeting">Welcome</div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
+    <canvas id="particleCanvas"></canvas>
+    <main id="content">
+        <div class="container">
+            <section id="home" class="section">
+                <!-- <div class="stars"></div> -->
+                <div class="navbar">
+                    <div class="brand-logo">
+                        <span id="brand_name">Hitesh Reddy</span>
+                    </div>
+
+                    <ul class="nav-items" id="nav-items">
+                        <li class="nav-btn active"><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                        <li class="nav-btn"><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                        <li class="nav-btn"><a href="#projects"><i class="fas fa-briefcase"></i> Projects</a></li>
+                        <li class="nav-btn"><a href="#skills"><i class="fas fa-file-alt"></i> Skills</a></li>
+                        <li class="nav-btn"><a href="#contact"><i class="fas fa-envelope"></i> Contact Me</a></li>
+                    </ul>
+
+                    <div class="hamburger" id="hamburger">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+
+                <div class="side-nav" id="side-nav">
+                    <div class="close-btn" id="close-btn">&times;</div>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+                        <li><a href="#projects"><i class="fas fa-briefcase"></i> Projects</a></li>
+                        <li><a href="#skills"><i class="fas fa-file-alt"></i> Skills</a></li>
+                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Me</a></li>
+                    </ul>
+                </div>
+                <div class="overlay" id="overlay"></div>
+                <div id="profilebox">
+                    <div style="font-family: Snell Roundhand, cursive;">
+                        <h1 id="slide-right" style="padding: 2rem;"><span class="highlight">Hi</span>tesh Reddy Buereddy
+                        </h1>
+                    </div>
+                    <div class="typewriter-container" id="typewriter"></div>
+                    <br>
+                    <button class="bot" style="z-index:100;position: relative; cursor: pointer;">Click me!!</button>
+                    <button class="bot" style="z-index:100;position: relative; cursor: pointer;" onclick="openresume()">Resume</button>
+                </div>
+                
+        </div>
+
+        </section>
+
+        <section id="about">
+            <div class="about-container">
+                <div class="aboutmecontent">
+                    <h2 style="padding: 2rem;text-align: center;">Who am I?</h2>
+                    <p class="fade-in" style="color: aliceblue;">
+                        Hi! I am Hitesh Reddy, a passionate and driven individual with a strong desire to learn and
+                        grow. I completed my master's degree in Computer Science from New Jersey Institute of
+                        Technology.
+                        <br><br>I have a strong background in software development, mern stack development, machine
+                        learning and data Science, with strong programming foundation with <span
+                            style="color: aqua;">C++, python and java</span>.
+                        <br><br>Coming to frameworks i have worked in react JS and also have experience in backend
+                        development with node.js, express.js along with django and Django REST API for web development
+                    </p>
+                </div>
+                <div class="profilepic">
+                    <img src="assets/Hitesh_reddy.jpg" alt="Profile Picture" class="profilepic">
+                </div>
+            </div>
+        </section>
+        <section id="experience">
+            <h1 class="section-title">Timeline</h1>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Jan 2025 - Present</div>
+                        <div>
+                            <h2>Prompt Engineer</h2>
+                            <p>Congnute Inc.</p>
+                        </div>
+                        <p class="display-before">
+                            As part of my role at Cognute, I was responsible for developing a customer support chatbot using Llama 3.3, an advanced language model. The project aimed to improve customer service efficiency by automating responses to customer asked questions, resolving issues, and escalating complex queries.
+                        </p>
+                        <div class="description">
+                            <ul>
+                                <li>Conducted an in-depth analysis of customer queries and tailored chatbot responses to address the most common issues.</li>
+                                <li>Created and iterated on prompts, refining the chatbot's ability to provide accurate, context-aware responses across a wide range of topics.</li>
+                                <!-- <li>Integrated the chatbot into the company's customer support system using API testing and debugging techniques.</li> -->
+                                <li>Skills: Llama 3.3, Python, APIs, A/B Testing, NLP Techniques, Reinforcement Learning.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Sept 2023 - Present</div>
+                        <div>
+                            <h2>Master's Degree</h2>
+                            <p>New Jersey Institute of Technology</p>
+                        </div>
+                        <p class="display-before">I moved from India to the U.S. to pursue my Computer Science degree at NJIT, driven by a passion for technology and innovation. With a 4.0 GPA, I’ve honed my skills through projects like TimeFlex, Image Classification, and coursework in Machine Learning, Big Data, and Operating Systems.</p>
+                        <div class="description">
+                            <p>During my master's, I gained expertise in machine learning (CNNs, RNNs, Transformers), big data (Hadoop, Spark, AWS), and full-stack development (MERN, REST APIs, cloud deployment). I also worked on AI-driven financial automation (CrewAI, session-based memory) and advanced data analysis (Sparklyr, Python, R, DSA - 200+ LeetCode problems).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">2022 - 2023</div>
+                        <div>
+                            <h2>Software Developer</h2>
+                            <p>Emerging Computer Arena</p>
+                        </div>
+                        <p class="display-before"> I contributed to SNIST's ECA Coding Contest platform by developing both the frontend and backend. Using React for the UI and Django for the backend, I created a seamless, user-friendly interface. The system efficiently handled registrations, submissions, and results processing.</p>
+                        <div class="description">
+                            <p>I developed the SNIST ECA Coding Contest platform using React for a dynamic, component-based frontend and Django REST Framework to build scalable API endpoints for the backend. I implemented user authentication using JWT tokens and designed database models in PostgreSQL to handle participant data and contest results. The system supported real-time contest updates and seamless user interaction.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">March 2022 - July 2022</div>
+                        <div>
+                            <h2>DSA Course</h2>
+                            <p>Smart Interviews</p>
+                        </div>
+                        <p class="display-before"></p>
+                        <div class="description">
+                            <p></p>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Jan 2020 - Feb 2023</div>
+                        <div>
+                            <h2>Working Body Member</h2>
+                            <p>The Robotics Club</p>
+                        </div>
+                        <p class="display-before">I volunteered for 3 years in the Robotics Club at SNIST, serving as a Technical Coordinator and eventually the Technical Head for the Roboved fest. I contributed to organizing the event, raising funds, and guiding 7 members in building their first robot. Our efforts led to a successful event that fostered technical learning and hands-on experience for participants.</p>
+                        <div class="description">
+                            <p>During my 3-year volunteer role in the Robotics Club at SNIST, I honed leadership, organizational, and fundraising skills as the Technical Head for the Roboved fest. I led a team of 7, teaching them how to build their first robot while managing event logistics and securing sponsorships. This experience enhanced my ability to lead teams and execute large-scale technical projects.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="date">Aug 2019 - June 2023</div>
+                        <div>
+                            <h2>Bachelor's Degree</h2>
+                            <p>Sreenidhi Institute of Science and Technology</p>
+                        </div>
+                        <p class="display-before">  I completed my Bachelor's degree in Computer Science from Sreenidhi Institute of Science and Technology with a CGPA of 8.73/10. In addition, I served as a class representative for 2.5 years, collaborating with professors to manage academic activities and address student concerns.</p>
+                        <div class="description">
+                            <p>I gained practical experience in programming, data structures, algorithms, and web development through my Bachelor's in Computer Science. I also developed project management and leadership skills while working on team-based technical projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="projects">
+            <h1 class="section-title">Featured Projects</h1>
+
+            <div class="category-container">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI</button>
+                <button class="filter-btn" data-filter="ml">ML & DL</button>
+                <button class="filter-btn" data-filter="web">Software</button>
+                <button class="filter-btn" data-filter="data">Analysis</button>
+            </div>
+            <div class="project-container">
+                
+                <div class="project-card" onclick="opentimeflex()" data-category="ml">
+                    <div class="image-container">
+                        <img src="./assets/stockmarket.jpeg" alt="Project Image">
+                        <h3 class="project-name">TimeFlex Trader</h3>
+                        <div class="overlay">
+                            <span class="project-title">TimeFlex Trader</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <ul class="fade-in">
+                            <li>Developed hybrid deep learning models <span class="highlight">(LSTM &
+                                    Transformer)</span> for stock price prediction with <span class="highlight">96%
+                                    R²</span> and <span class="highlight">minimal RMSE</span></li>
+                            <li>Enhanced predictions using <span class="highlight">rolling statistics and volatility
+                                    metrics.</span></li>
+                            <li>Built a data pipeline for preprocessing and normalization to optimize forecasting
+                                performance.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="project-card" onclick="openvisionnet()" data-category="ml">
+                        <div class="image-container">
+                            <img src="./assets/cifar10.jpeg" alt="Project Image">
+                            <h3 class="project-name">VisionNet</h3>
+                            <div class="overlay">
+                                <span class="project-title">VisionNet</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                
+                                <li>Developed and compared a <span class="highlight">custom CNN with ResNet-18</span> on the <span class="highlight">CIFAR-10 dataset</span> for image classification.
+                                    <li>Achieved <span class="highlight">80% accuracy with custom CNN</span>  and <span class="highlight"> 95% with ResNet-18</span>, demonstrating the efficacy of deeper architectures.</li>
+                                    <li>Employed <span class="highlight">data augmentation and optimization techniques</span> to enhance model performance and generalization.</li>
+                                
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <span class="highlight"></span>
+                <div class="fade-in">
+                    <div class="project-card" onclick="openagriprotech()" data-category="ml,web">
+                        <div class="image-container">
+                            <img src="./assets/agriprotech.png" alt="Project Image">
+                            <h3 class="project-name">AgriProtech</h3>
+                            <div class="overlay">
+                                <span class="project-title">AgriProtech</span>
+                            </div>
+                        </div>
+
+                        <!-- Project Details with Bullet Points -->
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li>Constructed a custom made <span class="highlight">Convolutional Neural Network
+                                    (CNN)</span> model for predicting plant diseases based on leaf characteristics
+                                which achieved <span class="highlight">98% accuracy</span></li>
+                            <li>Integrated the model into a web application using <span class="highlight">Flask and
+                                    HTML</span>, providing users with disease predictions and suggestions for
+                                appropriate medicines and pesticides.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="project-card" onclick="opencardio()" data-category="ml,web">
+                        <div class="image-container">
+                            <img src="./assets/cardiopathie.png" alt="Project Image">
+                            <h3 class="project-name">Cardiopathie</h3>
+                            <div class="overlay">
+                                <span class="project-title">Cardiopathie</span>
+                            </div>
+                        </div>
+
+                        <!-- Project Details with Bullet Points -->
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li>Designed CNN models <span class="highlight">(Inception ResNet v2, VGG, ResNet-50)</span>
+                                    achieving <span class="highlight">94% segmentation accuracy</span> on 2400 CT images,
+                                    classifying calcium-positive and calcium-negative cases using NRRD medical datasets.
+                                </li>
+                                <li>Developed a <span class="highlight">pipeline</span> validated on <span class="highlight">20,084
+                                        CT scans, achieving >90% precision</span> in calcium score
+                                    prediction, significantly <span class="highlight">improving diagnostic speed and
+                                        reducing manual intervention.</span></li>
+                                <li>Leveraged TensorFlow and SimpleITK for efficient preprocessing and segmentation, <span
+                                        class="highlight">reducing computation time by 30% on 4GB GPU hardware</span>,
+                                    ensuring scalable clinical deployment.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="project-card" onclick="openweatherapp()" data-category="web">
+                        <div class="image-container">
+                            <img src="./assets/Weatherapp.png" alt="Project Image">
+                            <h3 class="project-name">SkyWeathercast</h3>
+                            <div class="overlay">
+                                <span class="project-title">SkyWeathercast</span>
+                            </div>
+                        </div>
+                        <!-- Project Details with Bullet Points -->
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li><span class="highlight">Autonomous Cooking:</span> COCINERO automates food preparation, chopping ingredients, adding seasonings, and mixing them based on user inputs.</li>
+                                    <li>Convenience: Designed for busy individuals, it simplifies cooking for working professionals, students, and bachelors.</li>
+                                    <li>Focus on Salads: Initially, it automates salad preparation, including cutting, seasoning, and mixing for a tasty dish.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+            
+                <div class="fade-in">
+                    <div class="project-card" onclick="opencocinero()" data-category="web">
+                        <div class="image-container">
+                            <img src="./assets/cocinero.jpeg" alt="Project Image">
+                            <h3 class="project-name">Cocinero</h3>
+                            <div class="overlay">
+                                <span class="project-title">Cocinero</span>
+                            </div>
+                        </div>
+                        <!-- Project Details with Bullet Points -->
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li><span class="highlight">Autonomous Cooking:</span> COCINERO automates food preparation, chopping ingredients, adding seasonings, and mixing them based on user inputs.</li>
+                                    <li>Convenience: Designed for busy individuals, it simplifies cooking for working professionals, students, and bachelors.</li>
+                                    <li>Focus on Salads: Initially, it automates salad preparation, including cutting, seasoning, and mixing for a tasty dish.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="project-card" onclick="opencognute()" data-category="ai">
+                        <div class="image-container">
+                            <img src="./assets/" alt="Project Image">
+                            <h3 class="project-name">Cognute AI</h3>
+                            <div class="overlay">
+                                <span class="project-title">Cognute Ai</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li>Working on it</li>
+                                <li>Will update once done</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="project-card" onclick="opencognute()" data-category="data">
+                        <div class="image-container">
+                            <img src="./assets/" alt="Project Image">
+                            <h3 class="project-name">Data Analysis using tableau</h3>
+                            <div class="overlay">
+                                <span class="project-title">Data Analysis using tableau</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li>working on it</li>
+                                <li>Will update once done</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="project-card" onclick="opencognute()" data-category="web,ai">
+                        <div class="image-container">
+                            <img src="./assets/" alt="Project Image">
+                            <h3 class="project-name">ToDo and Chatapp</h3>
+                            <div class="overlay">
+                                <span class="project-title">Todo and chatapp</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li>working on it</li>
+                                <li>Will update once done</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <div class="project-card" onclick="opencognute()" data-category="web,ai">
+                        <div class="image-container">
+                            <img src="./assets/" alt="Project Image">
+                            <h3 class="project-name">Portfolio chatbot</h3>
+                            <div class="overlay">
+                                <span class="project-title">Portfolio chatbot</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li>working on it</li>
+                                <li>Will update once done</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <button class="load-more">Load More</button>
+        </section>
+        <section id="skills">
+            <h1 class="section-title">Skills & Expertise</h1>
+            
+            <div class="skills-container">
+                <!-- Tabs for skill categories -->
+                <div class="skills-tabs">
+                    <button class="tab-btn active" data-category="all">All Skills</button>
+                    <button class="tab-btn" data-category="programming">Programming</button>
+                    <button class="tab-btn" data-category="ml">Machine Learning</button>
+                    <button class="tab-btn" data-category="web">Web Development</button>
+                </div>
+                
+                <!-- Hexagon grid for skills -->
+                <div class="hexagon-grid">
+                    <!-- Programming Skills -->
+                    <div class="hexagon-item" data-skill="programming">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hexagon-item" data-skill="programming">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-cuttlefish"></i>
+                                <span>C++</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hexagon-item" data-skill="programming">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hexagon-item" data-skill="programming">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-java"></i>
+                                <span>Java</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ML Skills -->
+                    <div class="hexagon-item" data-skill="ml">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fas fa-brain"></i>
+                                <span>TensorFlow</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hexagon-item" data-skill="ml">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fas fa-fire"></i>
+                                <span>PyTorch</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hexagon-item" data-skill="ml">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Scikit-Learn</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hexagon-item" data-skill="ml">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fas fa-database"></i>
+                                <span>Data Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Web Dev Skills -->
+                    <div class="hexagon-item" data-skill="web">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-python"></i>
+                                <span>Django</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hexagon-item" data-skill="web">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>  
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hexagon-item" data-skill="web">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hexagon-item" data-skill="web">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hexagon-item" data-skill="web">
+                        <div class="hexagon">
+                            <div class="hexagon-content">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skill details popup -->
+                <div class="skill-popup">
+                    <div class="popup-content">
+                        <span class="close-popup">&times;</span>
+                        <h3 class="popup-title">Python</h3>
+                        <div class="skill-level">
+                            <div class="level-bar">
+                                <div class="level-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="level-text">Advanced (90%)</span>
+                        </div>
+                        <p class="skill-description">
+                            Extensive experience with Python for data science, backend development, and automation. 
+                            Proficient with libraries like Pandas, NumPy, and Flask.
+                        </p>
+                        <div class="skill-projects">
+                            <h4>Featured Projects:</h4>
+                            <ul>
+                                <li>TimeFlex Trader</li>
+                                <li>AgriProtech</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section class="section" id="certificate">
+            <div class="certificate-container">
+                <h1 class="section-title">Certificate</h1>
+                <div class="certificate-card">
+                    <a href=""><img src="./assets/cloudfoundation.png"></a>
+                </div>
+                <div class="certificate-card"><a href=""><img src="./assets/cloudarc.png" alt=""></a></div>
+                <div class="certificate-card"><a href=""><img src="./assets/deeplearning.png" alt=""></a></div>
+                <div class="certificate-card"><a href=""><img src="./assets/download.svg" alt=""></a></div>
+                <div class="certificate-card"><a href=""><img src="" alt=""></a></div>
+            </div>
+        </section> -->
+        <section id="contact" class="section">
+            <div class="contact-container">
+                <div class="contact-left">
+                    <h1>Let's Connect</h1>
+                    <p>I'm always ready to Collaborate and learn from others. Feel free to reach out to me via email or
+                        LinkedIn.</p>
+                    <div class="contact-info">
+                    <p><i class="fa-solid fa-envelope"></i> buereddyhiteshreddy28@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +1 (929)-498-6356</p></div>
+                </div>
+                <div class="contact-details">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name:</label>
+                                <input type="text" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name:</label>
+                                <input type="text" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message:</label>
+                            <textarea name="message" rows="4" required></textarea>
+                        </div>
+                        <button class="submit-btn" type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </section>
+    
+        <div class="chatbot-container">
+            <button class="chatbot-toggle">
+                <img src="./assets/chatbot.png" alt="Chat" class="chat-icon">
+            </button>
+
+            <div class="chatbot-interface">
+                <div class="chat-header">
+                    <h3>AI Assistant</h3>
+                    <button class="close-chat">×</button>
+                </div>
+
+                <div class="chat-messages">
+                    <div class="bot-message">
+                        <div class="message-content">
+                            Hi, I am Hitesh Reddy Assistant
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input">
+                    <input type="text" placeholder="Type your message...">
+                    <button class="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-background">
+          <span class="bg-name">Hitesh Reddy</span>
+        </div>
+        
+        <div class="footer-content">
+          <div class="footer-links">
+            <a href="#home" class="social-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+              </a>
+            <a href="https://github.com/HiteshReddy28" class="social-link">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/hitesh-reddy-buereddy-66a98b192/" class="social-link">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/h1t35hr3ddy_2002/" class="social-link">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="mailto:buereddyhiteshreddy28@gmail.com" class="social-link">
+              <i class="far fa-envelope"></i>
+              <span>Email</span>
+            </a>
+          </div>
+          
+          <div class="divider"></div>
+          
+          <div class="copyright">
+            <p>&copy; 2025 Hitesh Reddy. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
