@@ -14,63 +14,63 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
 });
 
-const particles = [];
+// const particles = [];
 
-// Particle class
-class Particle {
-  constructor(x, y, size, color, speedX, speedY) {
-    this.x = x;
-    this.y = y;
-    this.size = size;
-    this.color = color;
-    this.speedX = speedX;
-    this.speedY = speedY;
-  }
+// // Particle class
+// class Particle {
+//   constructor(x, y, size, color, speedX, speedY) {
+//     this.x = x;
+//     this.y = y;
+//     this.size = size;
+//     this.color = color;
+//     this.speedX = speedX;
+//     this.speedY = speedY;
+//   }
 
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    this.size *= 0.95; // Gradually shrink
-  }
+//   update() {
+//     this.x += this.speedX;
+//     this.y += this.speedY;
+//     this.size *= 0.95; // Gradually shrink
+//   }
 
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-  }
-}
+//   draw() {
+//     ctx.beginPath();
+//     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+//     ctx.fillStyle = this.color;
+//     ctx.fill();
+//   }
+// }
 
-window.addEventListener('mousemove', (event) => {
-  const { clientX: x, clientY: y } = event;
-  for (let i = 0; i < 5; i++) {
-    const size = Math.random() * 5 + 2;
-    const color = `rgba(255, 255, 255, ${Math.random()})`;
-    const speedX = (Math.random() - 0.5) * 2;
-    const speedY = (Math.random() - 0.5) * 2;
-    particles.push(new Particle(x, y, size, color, speedX, speedY));
-  }
-});
+// window.addEventListener('mousemove', (event) => {
+//   const { clientX: x, clientY: y } = event;
+//   for (let i = 0; i < 5; i++) {
+//     const size = Math.random() * 5 + 2;
+//     const color = `rgba(255, 255, 255, ${Math.random()})`;
+//     const speedX = (Math.random() - 0.5) * 2;
+//     const speedY = (Math.random() - 0.5) * 2;
+//     particles.push(new Particle(x, y, size, color, speedX, speedY));
+//   }
+// });
 
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// function animate() {
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < particles.length; i++) {
-    particles[i].update();
-    particles[i].draw();
+//   for (let i = 0; i < particles.length; i++) {
+//     particles[i].update();
+//     particles[i].draw();
 
-    // Remove particles that are too small
-    if (particles[i].size < 0.5) {
-      particles.splice(i, 1);
-      i--;
-    }
-  }
+//     // Remove particles that are too small
+//     if (particles[i].size < 0.5) {
+//       particles.splice(i, 1);
+//       i--;
+//     }
+//   }
 
-  requestAnimationFrame(animate);
-}
+//   requestAnimationFrame(animate);
+// }
 
-animate();
+// animate();
 
 const hamburger = document.getElementById('hamburger');
 const sideNav = document.getElementById('side-nav');
@@ -109,7 +109,7 @@ navLinks.forEach(link => {
 });
 
 
-const words = ["Software Developer","Machine learning Enthusiast" , "Chess Player", "Problem Solver","Cricketer","Data Analyst"];
+const words = ["AI Enthusiast" ,"Software Developer","Machine Learning Explorer" , "Problem Solver","Data Analyst", "Tech Enthusiast"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -160,7 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   elements.forEach(element => observer.observe(element));
 });
-
+function Submission(){
+  alert("Recieved your message!!");
+}
 function openresume(){
   window.open("./assets/Hitesh_Reddy.pdf" );
 }
@@ -358,7 +360,7 @@ async function sendMessage() {
     addMessage(text, 'user');
     input.value = '';
     data = await getMockResponse(text);
-    // console.log(data)
+    console.log(data)
     addMessage(data, 'bot');
 }
 
@@ -387,9 +389,9 @@ async function getMockResponse(input) {
   })
   console.log(input)
   data = await response.json();
- 
   return data.message;
   }catch(error){
+    return "Hitesh is working on me!! and will deploy me in a few days!!";
     console.error('Error:', error);
   }
 }
@@ -505,55 +507,268 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-document.querySelectorAll('.nav-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelector('.nav-btn.active')?.classList.remove('active');
-    btn.classList.add('active');
-  });
-});
+// document.querySelectorAll('.nav-btn').forEach(btn => {
+//   btn.addEventListener('click', () => {
+//     document.querySelector('.nav-btn.active')?.classList.remove('active');
+//     btn.classList.add('active');
+//   });
+// });
+
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   const hexItems = document.querySelectorAll('.hexagon-item');
+//   const loadMoreBtn = document.querySelector('.load-more-btn');
+//   const tabButtons = document.querySelectorAll('.tab-btn');
+
+//   const mediaQuery = window.matchMedia('(max-width: 768px)');
+//   let itemsToShow = mediaQuery.matches ? 6 : 12;
+//   let currentlyVisible = itemsToShow;
+//   let activeCategory = 'all';
+
+//   function updateVisibleItems() {
+//       let visibleItems = 0;
+
+//       hexItems.forEach((item) => {
+//           const category = item.dataset.skill;
+//           const shouldShow = activeCategory === 'all' || category === activeCategory;
+
+//           if (shouldShow && visibleItems < currentlyVisible) {
+//               item.style.display = 'flex';
+//               item.style.animation = 'none';
+//               setTimeout(() => {
+//                   item.style.animation = 'hexagonAppear 0.5s forwards';
+//               }, 10);
+//               visibleItems++;
+//           } else {
+//               item.style.display = 'none';
+//           }
+//       });
+
+//       // Hide Load More button if all items are shown
+//       const totalVisibleItems = [...hexItems].filter(item => 
+//           activeCategory === 'all' || item.dataset.skill === activeCategory
+//       ).length;
+
+//       if (currentlyVisible >= totalVisibleItems) {
+//           loadMoreBtn.style.display = 'none';
+//       } else {
+//           loadMoreBtn.style.display = 'block';
+//       }
+//   }
+
+//   loadMoreBtn.addEventListener('click', () => {
+//       currentlyVisible += itemsToShow;
+//       updateVisibleItems();
+//   });
+
+//   tabButtons.forEach(button => {
+//       button.addEventListener('click', () => {
+//           tabButtons.forEach(btn => btn.classList.remove('active'));
+//           button.classList.add('active');
+
+//           activeCategory = button.dataset.category;
+//           currentlyVisible = itemsToShow;
+
+//           updateVisibleItems();
+//       });
+//   });
+
+//   window.addEventListener('resize', () => {
+//       itemsToShow = mediaQuery.matches ? 6 : 12;
+//       currentlyVisible = itemsToShow;
+//       updateVisibleItems();
+//   });
+
+//   updateVisibleItems();
+// });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   // Set animation delays for staggered appearance
+//   const hexItems = document.querySelectorAll('.hexagon-item');
+//   hexItems.forEach((item, index) => {
+//       item.style.setProperty('--i', index);
+//   });
+  
+//   // Tab filtering
+//   const tabButtons = document.querySelectorAll('.tab-btn');
+//   tabButtons.forEach(button => {
+//       button.addEventListener('click', () => {
+//           // Update active button
+//           tabButtons.forEach(btn => btn.classList.remove('active'));
+//           button.classList.add('active');
+          
+//           // Filter items
+//           const category = button.dataset.category;
+//           hexItems.forEach(item => {
+//               if (category === 'all' || item.dataset.skill === category) {
+//                   item.style.display = 'block';
+//                   // Reset animation
+//                   item.style.animation = 'none';
+//                   setTimeout(() => {
+//                       item.style.animation = 'hexagonAppear 0.5s forwards';
+//                       item.style.animationDelay = `${parseFloat(item.style.getPropertyValue('--i')) * 0.1}s`;
+//                   }, 10);
+//               } else {
+//                   item.style.display = 'none';
+//               }
+//           });
+//       });
+//   });
+
+  
+  
+  
+//   // Popup functionality
+//   const skillPopup = document.querySelector('.skill-popup');
+//   const closePopup = document.querySelector('.close-popup');
+//   const popupTitle = document.querySelector('.popup-title');
+//   const levelFill = document.querySelector('.level-fill');
+//   const levelText = document.querySelector('.level-text');
+//   const skillDescription = document.querySelector('.skill-description');
+//   const projectsList = document.querySelector('.skill-projects ul');
+  
+//   // Skill data (this could be expanded)
+//   const skillData = {
+//       'Python': {
+//           level: 90,
+//           description: 'Extensive experience with Python for data science, backend development, and automation. Proficient with libraries like Pandas, NumPy, and Flask.',
+//           projects: ['TimeFlex Trader', 'AgriProtech']
+//       },
+//       'JavaScript': {
+//           level: 85,
+//           description: 'Strong expertise in frontend JavaScript development. Experience with modern frameworks and ES6+ features.',
+//           projects: ['Portfolio', 'Weather App', 'To do App']
+//       },
+//       'React': {
+//           level: 82,
+//           description: 'Experience building complex user interfaces with React. Familiar with Redux, Context API, and React Hooks.',
+//           projects: ['Portfolio Website', 'Dashboard Application']
+//       },
+//       'C++':{
+//         level: 95,
+//         description: "Started coding journey with C++. Solved 200+ problems in leetcode",
+//         projects: ['Competitive coding']
+//       },
+//       'Java':{
+//         level: 40,
+//         description: "Learn java in my undergraduate. Learned about multithreading, concurrency , and data structures",
+//         projects: ['Weather App']
+//         },
+//       'PyTorch':{
+//         level: 80,
+//         description: "Experience with PyTorch for deep learning projects",
+//         projects: ['Image classification', 'Object detection']
+//       },
+//       'AWS':{
+//         level: 75,
+//         description: "Experience in EC2 instance, S3 bucket, and Lambda functions",
+//         projects: ['Portfolio backend Deployement', 'Apache Spark for Big Data in AWS']
+//       },
+//       'Git/Github':{
+//         level: 90,
+//         description: "Experience with Git for version control",
+//         projects: ['Portfolio']
+//         },
+//         'SQL':{
+//           level: 80,
+//           description: "Experience with SQL for database management",
+//           projects: ['Portfolio']
+//         },
+//         'Jenkins':{
+//           level: 80,
+//           description: "Experience with Jenkins for CI/CD pipeline",
+//           projects: ['Portfolio']
+//         }
+//   };
+  
+  
+//   hexItems.forEach(item => {
+//       const hexagon = item.querySelector('.hexagon');
+//       const skillName = item.querySelector('span').textContent;
+      
+//       hexagon.addEventListener('click', () => {
+//         // console.log(skillData[skillName])
+//           const skill = skillData[skillName] || {
+//               level: 85,
+//               description: 'Proficient in this technology with hands-on project experience.',
+//               projects: ['Various Projects']
+//           };
+
+//           console.log(skill);
+//           // Update popup content
+//           popupTitle.textContent = '';
+//           skillDescription.textContent = ''; 
+//           levelFill.style.animation = 'none'; // Reset animation
+//           levelFill.style.width = '0'; // Reset bar width
+//           projectsList.innerHTML = '';
+//           setTimeout(() => {
+//               popupTitle.textContent = skillName;
+//               skillDescription.textContent = skill.description; // Assign new content
+//               levelFill.style.animation = ''; // Re-enable animation
+//               levelFill.style.width = `${skill.level}%`;
+//               levelText.textContent = `${skill.level < 70 ? 'Intermediate' : 'Advanced'} (${skill.level}%)`;
+//               projectsList.innerHTML = '';
+//               skill.projects.forEach(project => {
+//                 const li = document.createElement('li');
+//                 li.textContent = project;
+//                 projectsList.appendChild(li);
+//             });
+//           }, 10);
+          
+//           skillPopup.classList.add('active');
+
+          
+//           // Trigger animation
+//           setTimeout(() => {
+//               levelFill.style.animation = 'fillBar 1.5s ease forwards';
+//           }, 300);
+
+        
+//       });
+//   });
+  
+//   // Close popup
+//   closePopup.addEventListener('click', () => {
+//       skillPopup.classList.remove('active');
+//   });
+  
+//   // Close popup when clicking outside
+//   skillPopup.addEventListener('click', (e) => {
+//       if (e.target === skillPopup) {
+//           skillPopup.classList.remove('active');
+//       }
+//   });
+// });
+
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Set animation delays for staggered appearance
   const hexItems = document.querySelectorAll('.hexagon-item');
-  hexItems.forEach((item, index) => {
-      item.style.setProperty('--i', index);
-  });
-  
-  // Tab filtering
+  const loadMoreBtn = document.querySelector('.load-more-btn');
   const tabButtons = document.querySelectorAll('.tab-btn');
-  tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          // Update active button
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-          
-          // Filter items
-          const category = button.dataset.category;
-          hexItems.forEach(item => {
-              if (category === 'all' || item.dataset.skill === category) {
-                  item.style.display = 'block';
-                  // Reset animation
-                  item.style.animation = 'none';
-                  setTimeout(() => {
-                      item.style.animation = 'hexagonAppear 0.5s forwards';
-                      item.style.animationDelay = `${parseFloat(item.style.getPropertyValue('--i')) * 0.1}s`;
-                  }, 10);
-              } else {
-                  item.style.display = 'none';
-              }
-          });
-      });
-  });
-  
-  // Popup functionality
   const skillPopup = document.querySelector('.skill-popup');
   const closePopup = document.querySelector('.close-popup');
   const popupTitle = document.querySelector('.popup-title');
   const levelFill = document.querySelector('.level-fill');
   const levelText = document.querySelector('.level-text');
   const skillDescription = document.querySelector('.skill-description');
-  
-  // Skill data (this could be expanded)
+  const projectsList = document.querySelector('.skill-projects ul');
+
+  const mediaQuery = window.matchMedia('(max-width: 768px)');
+  let itemsToShow = mediaQuery.matches ? 6 : 12;
+  let currentlyVisible = itemsToShow;
+  let activeCategory = 'all';
+
+  // Staggered animation delays
+  hexItems.forEach((item, index) => {
+      item.style.setProperty('--i', index);
+  });
+
+  // Skill Data
   const skillData = {
       'Python': {
           level: 90,
@@ -562,190 +777,221 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       'JavaScript': {
           level: 85,
-          description: 'Strong expertise in frontend and backend JavaScript development. Experience with modern frameworks and ES6+ features.',
-          projects: ['Interactive Websites', 'Web Applications']
+          description: 'Strong expertise in frontend JavaScript development. Experience with modern frameworks and ES6+ features.',
+          projects: ['Portfolio', 'Weather App', 'To-do App']
       },
       'React': {
           level: 82,
           description: 'Experience building complex user interfaces with React. Familiar with Redux, Context API, and React Hooks.',
-          projects: ['Portfolio Website', 'Dashboard Application']
+          projects: ['Portfolio Website', 'Weather app']
       },
-
+      'C++': {
+          level: 95,
+          description: "Started coding journey with C++. Solved 200+ problems on Leetcode.",
+          projects: ['Competitive Coding']
+      },
+      'Java': {
+          level: 40,
+          description: "Learned Java in my undergraduate studies. Knowledgeable in multithreading, concurrency, and data structures.",
+          projects: ['Weather App']
+      },
+      'PyTorch': {
+          level: 80,
+          description: "Experience with PyTorch for deep learning projects.",
+          projects: ['Image Classification', 'Object Detection']
+      },
+      'AWS': {
+          level: 75,
+          description: "Experience with EC2 instances, S3 buckets, and Lambda functions.",
+          projects: ['Portfolio Backend Deployment', 'Apache Spark for Big Data on AWS']
+      },
+      'Git/Github': {
+          level: 90,
+          description: "Experienced with Git for version control and collaboration.",
+          projects: ['Portfolio']
+      },
+      'Mysql & PostgreSQL': {
+          level: 80,
+          description: "Experience with SQL and Nosql for database management and query optimization.",
+          projects: ['Portfolio', 'CognuteAi','Weather app','ChatApp']
+      },
+      'Jenkins': {
+          level: 80,
+          description: "Experience with Jenkins for CI/CD pipelines.",
+          projects: ['Portfolio']
+      },
+      'Docker':{
+        level: 75,
+        description: "Experience with Docker for containerization and creating images.",
+        projects: ['Portfolio','TimeFlex Trader', 'Cardiopathie']
+      },
+      'TensorFlow':{
+        level: 85,
+        description: "Experience with TensorFlow for deep learning projects.",
+        projects: ['Image Classification', 'Object Detection']
+      },
+      'PyTorch':{
+        level: 75,
+        description: "Experience with PyTorch for deep learning projects.",
+        projects: ['Image Classification', 'Object Detection']
+      },
+      'Scikit-Learn':{
+        level: 90,
+        description: "Experience with Scikit-Learn for machine learning projects.",
+        projects: ['Image Classification', 'Object Detection']
+      },
+      "LLM's":{
+        level: 80,
+        description: "Experience with LLM's for natural language processing.",
+        projects: ['H.A.R.I.S','Cognute']
+      },
+      "Prompting":{
+        level: 80,
+        description: "Experience with prompting for natural language processing.",
+        projects: ['H.A.R.I.S','Cognute']
+      },
   };
-  
-  
+
+  function updateVisibleItems() {
+      let visibleItems = 0;
+
+      hexItems.forEach((item) => {
+          const category = item.dataset.skill;
+          const shouldShow = activeCategory === 'all' || category === activeCategory;
+
+          if (shouldShow && visibleItems < currentlyVisible) {
+              item.style.display = 'flex';
+              item.style.animation = 'none';
+              setTimeout(() => {
+                  item.style.animation = 'hexagonAppear 0.5s forwards';
+              }, 10);
+              visibleItems++;
+          } else {
+              item.style.display = 'none';
+          }
+      });
+
+      const totalVisibleItems = [...hexItems].filter(item =>
+          activeCategory === 'all' || item.dataset.skill === activeCategory
+      ).length;
+
+      loadMoreBtn.style.display = currentlyVisible >= totalVisibleItems ? 'none' : 'block';
+  }
+
+  // Load More button functionality
+  loadMoreBtn.addEventListener('click', () => {
+      currentlyVisible += itemsToShow;
+      updateVisibleItems();
+  });
+
+  // Tab filtering
+  tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          activeCategory = button.dataset.category;
+          currentlyVisible = itemsToShow; // Reset visible items count when switching tabs
+          updateVisibleItems();
+      });
+  });
+
+  // Handle screen resizing
+  window.addEventListener('resize', () => {
+      itemsToShow = mediaQuery.matches ? 6 : 12;
+      currentlyVisible = itemsToShow;
+      updateVisibleItems();
+  });
+
+  // Popup functionality
   hexItems.forEach(item => {
       const hexagon = item.querySelector('.hexagon');
       const skillName = item.querySelector('span').textContent;
-      
+
       hexagon.addEventListener('click', () => {
           const skill = skillData[skillName] || {
-              level: 80,
+              level: 85,
               description: 'Proficient in this technology with hands-on project experience.',
               projects: ['Various Projects']
           };
-          
-          // Update popup content
-          popupTitle.textContent = skillName;
-          levelFill.style.setProperty('--width', skill.level + '%');
-          levelFill.style.width = '0'; // Reset for animation
-          levelText.textContent = `${skill.level < 70 ? 'Intermediate' : 'Advanced'} (${skill.level}%)`;
-          skillDescription.textContent = skill.description;
-          
-          // Update projects list
-          const projectsList = document.querySelector('.skill-projects ul');
+
+          // Reset popup content before updating
+          popupTitle.textContent = '';
+          skillDescription.textContent = '';
+          levelFill.style.animation = 'none';
+          levelFill.style.width = '0';
           projectsList.innerHTML = '';
-          skill.projects.forEach(project => {
-              const li = document.createElement('li');
-              li.textContent = project;
-              projectsList.appendChild(li);
-          });
-          
-          // Show popup
+
+          setTimeout(() => {
+              popupTitle.textContent = skillName;
+              skillDescription.textContent = skill.description;
+              levelFill.style.animation = '';
+              levelFill.style.width = `${skill.level}%`;
+              levelText.textContent = `${skill.level < 70 ? 'Intermediate' : 'Advanced'} (${skill.level}%)`;
+
+              projectsList.innerHTML = '';
+              skill.projects.forEach(project => {
+                  const li = document.createElement('li');
+                  li.textContent = project;
+                  projectsList.appendChild(li);
+              });
+          }, 10);
+
           skillPopup.classList.add('active');
-          
-          // Trigger animation
+
           setTimeout(() => {
               levelFill.style.animation = 'fillBar 1.5s ease forwards';
           }, 300);
       });
   });
-  
+
   // Close popup
   closePopup.addEventListener('click', () => {
       skillPopup.classList.remove('active');
   });
-  
+
   // Close popup when clicking outside
   skillPopup.addEventListener('click', (e) => {
       if (e.target === skillPopup) {
           skillPopup.classList.remove('active');
       }
   });
+
+  // Initial update to set the visible items
+  updateVisibleItems();
 });
 
 
 
+    document.querySelector("form").addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent default form submission
 
+        // Collect form data
+        const formData = {
+            first_name: document.querySelector("input[name='firstName']").value,
+            last_name: document.querySelector("input[name='lastName']").value,
+            email: document.querySelector("input[name='email']").value,
+            message: document.querySelector("textarea[name='message']").value
+        };
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Set animation delays for staggered appearance
-    const hexItems = document.querySelectorAll('.hexagon-item');
-    hexItems.forEach((item, index) => {
-        item.style.setProperty('--i', index);
-    });
-    
-    // Tab filtering
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Update active button
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            // Filter items
-            const category = button.dataset.category;
-            hexItems.forEach(item => {
-                if (category === 'all' || item.dataset.skill === category) {
-                    item.style.display = 'block';
-                    // Reset animation
-                    item.style.animation = 'none';
-                    setTimeout(() => {
-                        item.style.animation = 'hexagonAppear 0.5s forwards';
-                        item.style.animationDelay = `${parseFloat(item.style.getPropertyValue('--i')) * 0.1}s`;
-                    }, 10);
-                } else {
-                    item.style.display = 'none';
-                }
+        try {
+            // Send data to FastAPI backend
+            const response = await fetch("http://127.0.0.1:8000/submit-form", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
             });
-        });
-    });
-    
-    // Popup functionality
-    const skillPopup = document.querySelector('.skill-popup');
-    const closePopup = document.querySelector('.close-popup');
-    const popupTitle = document.querySelector('.popup-title');
-    const levelFill = document.querySelector('.level-fill');
-    const levelText = document.querySelector('.level-text');
-    const skillDescription = document.querySelector('.skill-description');
-    
-    // Skill data (this could be expanded)
-    const skillData = {
-        'Python': {
-            level: 90,
-            description: 'Extensive experience with Python for data science, backend development, and automation. Proficient with libraries like Pandas, NumPy, and Flask.',
-            projects: ['TimeFlex Trader', 'AgriProtech']
-        },
-        'JavaScript': {
-            level: 85,
-            description: 'Strong expertise in frontend and backend JavaScript development. Experience with modern frameworks and ES6+ features.',
-            projects: ['Interactive Websites', 'Web Applications']
-        },
-        'React': {
-            level: 82,
-            description: 'Experience building complex user interfaces with React. Familiar with Redux, Context API, and React Hooks.',
-            projects: ['Portfolio Website', 'Dashboard Application']
-        },
-        '': {
-            level: 82,
-            description: 'Experience building complex user interfaces with React. Familiar with Redux, Context API, and React Hooks.',
-            projects: ['Portfolio Website', 'Dashboard Application']
-        },
-        'Node.js': {
-            level: 82,
-            description: 'Experience building complex user interfaces with React. Familiar with Redux, Context API, and React Hooks.',
-            projects: ['Portfolio Website', 'Dashboard Application']
-        },
-        // Add more skills as needed
-    };
-    
-    // Open popup when clicking on a hexagon
-    hexItems.forEach(item => {
-        const hexagon = item.querySelector('.hexagon');
-        const skillName = item.querySelector('span').textContent;
-        
-        hexagon.addEventListener('click', () => {
-            const skill = skillData[skillName] || {
-                level: 80,
-                description: 'Proficient in this technology with hands-on project experience.',
-                projects: ['Various Projects']
-            };
-            
-            // Update popup content
-            popupTitle.textContent = skillName;
-            levelFill.style.setProperty('--width', skill.level + '%');
-            levelFill.style.width = '0'; // Reset for animation
-            levelText.textContent = `${skill.level < 70 ? 'Intermediate' : 'Advanced'} (${skill.level}%)`;
-            skillDescription.textContent = skill.description;
-            
-            // Update projects list
-            const projectsList = document.querySelector('.skill-projects ul');
-            projectsList.innerHTML = '';
-            skill.projects.forEach(project => {
-                const li = document.createElement('li');
-                li.textContent = project;
-                projectsList.appendChild(li);
-            });
-            
-            // Show popup
-            skillPopup.classList.add('active');
-            
-            // Trigger animation
-            setTimeout(() => {
-                levelFill.style.animation = 'fillBar 1.5s ease forwards';
-            }, 300);
-        });
-    });
-    
-    // Close popup
-    closePopup.addEventListener('click', () => {
-        skillPopup.classList.remove('active');
-    });
-    
-    // Close popup when clicking outside
-    skillPopup.addEventListener('click', (e) => {
-        if (e.target === skillPopup) {
-            skillPopup.classList.remove('active');
+
+            const result = await response.json();
+            alert(result.message); 
+
+            // Clear form after successful submission
+            if (response.ok) {
+                document.querySelector("form").reset();
+            }
+        } catch (error) {
+            alert("Message sent!!")        
+            console.error("Error submitting form:", error);
+            alert("Error submitting form. Please try again.");
         }
     });
-});
