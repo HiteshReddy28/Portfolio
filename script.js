@@ -331,71 +331,148 @@ setInterval(createRaindrop, 150);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-const toggle = document.querySelector('.chatbot-toggle');
-const interface = document.querySelector('.chatbot-interface');
-const closeBtn = document.querySelector('.close-chat');
-const sendBtn = document.querySelector('.send-button');
-const input = document.querySelector('.chat-input input');
-const messages = document.querySelector('.chat-messages');
-const bottoggle = document.querySelector('.bot');
-bottoggle.addEventListener('click', () => {
-  interface.style.display = 'flex';
-});
-toggle.addEventListener('click', () => {
-    interface.style.display = 'flex';
-});
+  const toggle = document.querySelector('.chatbot-toggle');
+  const interface = document.querySelector('.chatbot-interface');
+  const closeBtn = document.querySelector('.close-chat');
+  const sendBtn = document.querySelector('.send-button');
+  const input = document.querySelector('.chat-input input');
+  const messages = document.querySelector('.chat-messages');
 
-closeBtn.addEventListener('click', () => {
-    interface.style.display = 'none';
-});
+  // Toggle the chatbot interface on click
+  toggle.addEventListener('click', () => {
+      // Toggle visibility
+      interface.style.display = interface.style.display === 'flex' ? 'none' : 'flex';
+  });
 
-sendBtn.addEventListener('click', sendMessage);
-input.addEventListener('keypress', (e) => {
-    if(e.key === 'Enter') sendMessage();
-});
+  // Close the chatbot interface when the close button is clicked
+  closeBtn.addEventListener('click', () => {
+      interface.style.display = 'none';
+  });
 
-async function sendMessage() {
-    const text = input.value.trim();
-    if(!text) return;
-    addMessage(text, 'user');
-    input.value = '';
-    data = await getMockResponse(text);
-    console.log(data)
-    addMessage(data, 'bot');
-}
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+  });
 
-function addMessage(text, sender) {
+  // Send a message to the chatbot
+  async function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      input.value = '';
+      const typingIndicator = addTypingIndicator();
+      data = await getMockResponse(text);
+      typingIndicator.remove();
+      typeStreamingMessage(data, 'bot');
+  }
+  async function typeStreamingMessage(text, sender) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `${sender}-message`;
-    
+
     const content = document.createElement('div');
     content.className = 'message-content';
-    content.textContent = text;
-    
     messageDiv.appendChild(content);
     messages.appendChild(messageDiv);
-    messages.scrollTop = messages.scrollHeight;
-}
 
-async function getMockResponse(input) {
-  try{
-  const response = await fetch('http://localhost:8000/generate', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({"user":input})
-    
-  })
-  console.log(input)
-  data = await response.json();
-  return data.message;
-  }catch(error){
-    return "Hitesh is working on me!! and will deploy me in a few days!!";
-    console.error('Error:', error);
-  }
+    // Add the blinking cursor element to the message content
+    const cursor = document.createElement('span');
+    cursor.className = 'typing-cursor';
+    content.appendChild(cursor);
+
+    // Simulate typing effect (one character at a time)
+    let index = 0;
+    const typingSpeed = 30; // Adjust this value to make typing faster (lower is faster)
+
+    function typeNextChar() {
+        if (index < text.length) {
+            content.textContent += text[index]; // Add one character at a time
+            index++;
+
+            // Scroll the messages to the bottom as we type
+            messages.scrollTop = messages.scrollHeight;
+
+            setTimeout(typeNextChar, typingSpeed); // Call next char after a shorter delay for faster typing
+        } else {
+            // Remove the cursor when typing is finished
+            cursor.remove();
+        }
+    }
+
+    typeNextChar(); // Start typing effect
 }
+  // Add typing indicator
+  function addTypingIndicator() {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'bot-message typing';
+
+      const content = document.createElement('div');
+      content.className = 'message-content';
+      content.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+
+      messageDiv.appendChild(content);
+      messages.appendChild(messageDiv);
+      messages.scrollTop = messages.scrollHeight;
+
+      return messageDiv; // So we can remove it later
+  }
+
+  // Add the actual chat message
+  function addMessage(text, sender, isTemporary = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `${sender}-message`;
+
+      const content = document.createElement('div');
+      content.className = 'message-content';
+      content.textContent = text;
+
+      messageDiv.appendChild(content);
+      messages.appendChild(messageDiv);
+      messages.scrollTop = messages.scrollHeight;
+
+      return isTemporary ? messageDiv : null;
+  }
+
+  // Mock response from the backend
+  async function getMockResponse(input) {
+      try {
+          const response = await fetch('http://localhost:8000/generate', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ "user": input })
+          });
+          data = await response.json();
+          return data.message;
+      } catch (error) {
+          return "Hitesh is working on me!! and will deploy me in a few days!!";
+          console.error('Error:', error);
+      }
+  }
 });
+
+// function playTypingSound() {
+//   if (typingSound) {
+//     typingSound.loop = true;
+//     typingSound.volume = 0.3;
+
+//     const playPromise = typingSound.play();
+//     if (playPromise !== undefined) {
+//       playPromise.catch((error) => {
+//         console.warn("Typing sound couldn't autoplay:", error.message);
+//       });
+//     }
+//   }
+// }
+
+
+// function stopTypingSound() {
+//   if (typingSound) {
+//       typingSound.pause();
+//       typingSound.currentTime = 0;
+//   }
+// }
+
 
 
 // Updated JavaScript with smooth transitions
@@ -506,245 +583,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
-
-// document.querySelectorAll('.nav-btn').forEach(btn => {
-//   btn.addEventListener('click', () => {
-//     document.querySelector('.nav-btn.active')?.classList.remove('active');
-//     btn.classList.add('active');
-//   });
-// });
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   const hexItems = document.querySelectorAll('.hexagon-item');
-//   const loadMoreBtn = document.querySelector('.load-more-btn');
-//   const tabButtons = document.querySelectorAll('.tab-btn');
-
-//   const mediaQuery = window.matchMedia('(max-width: 768px)');
-//   let itemsToShow = mediaQuery.matches ? 6 : 12;
-//   let currentlyVisible = itemsToShow;
-//   let activeCategory = 'all';
-
-//   function updateVisibleItems() {
-//       let visibleItems = 0;
-
-//       hexItems.forEach((item) => {
-//           const category = item.dataset.skill;
-//           const shouldShow = activeCategory === 'all' || category === activeCategory;
-
-//           if (shouldShow && visibleItems < currentlyVisible) {
-//               item.style.display = 'flex';
-//               item.style.animation = 'none';
-//               setTimeout(() => {
-//                   item.style.animation = 'hexagonAppear 0.5s forwards';
-//               }, 10);
-//               visibleItems++;
-//           } else {
-//               item.style.display = 'none';
-//           }
-//       });
-
-//       // Hide Load More button if all items are shown
-//       const totalVisibleItems = [...hexItems].filter(item => 
-//           activeCategory === 'all' || item.dataset.skill === activeCategory
-//       ).length;
-
-//       if (currentlyVisible >= totalVisibleItems) {
-//           loadMoreBtn.style.display = 'none';
-//       } else {
-//           loadMoreBtn.style.display = 'block';
-//       }
-//   }
-
-//   loadMoreBtn.addEventListener('click', () => {
-//       currentlyVisible += itemsToShow;
-//       updateVisibleItems();
-//   });
-
-//   tabButtons.forEach(button => {
-//       button.addEventListener('click', () => {
-//           tabButtons.forEach(btn => btn.classList.remove('active'));
-//           button.classList.add('active');
-
-//           activeCategory = button.dataset.category;
-//           currentlyVisible = itemsToShow;
-
-//           updateVisibleItems();
-//       });
-//   });
-
-//   window.addEventListener('resize', () => {
-//       itemsToShow = mediaQuery.matches ? 6 : 12;
-//       currentlyVisible = itemsToShow;
-//       updateVisibleItems();
-//   });
-
-//   updateVisibleItems();
-// });
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   // Set animation delays for staggered appearance
-//   const hexItems = document.querySelectorAll('.hexagon-item');
-//   hexItems.forEach((item, index) => {
-//       item.style.setProperty('--i', index);
-//   });
-  
-//   // Tab filtering
-//   const tabButtons = document.querySelectorAll('.tab-btn');
-//   tabButtons.forEach(button => {
-//       button.addEventListener('click', () => {
-//           // Update active button
-//           tabButtons.forEach(btn => btn.classList.remove('active'));
-//           button.classList.add('active');
-          
-//           // Filter items
-//           const category = button.dataset.category;
-//           hexItems.forEach(item => {
-//               if (category === 'all' || item.dataset.skill === category) {
-//                   item.style.display = 'block';
-//                   // Reset animation
-//                   item.style.animation = 'none';
-//                   setTimeout(() => {
-//                       item.style.animation = 'hexagonAppear 0.5s forwards';
-//                       item.style.animationDelay = `${parseFloat(item.style.getPropertyValue('--i')) * 0.1}s`;
-//                   }, 10);
-//               } else {
-//                   item.style.display = 'none';
-//               }
-//           });
-//       });
-//   });
-
-  
-  
-  
-//   // Popup functionality
-//   const skillPopup = document.querySelector('.skill-popup');
-//   const closePopup = document.querySelector('.close-popup');
-//   const popupTitle = document.querySelector('.popup-title');
-//   const levelFill = document.querySelector('.level-fill');
-//   const levelText = document.querySelector('.level-text');
-//   const skillDescription = document.querySelector('.skill-description');
-//   const projectsList = document.querySelector('.skill-projects ul');
-  
-//   // Skill data (this could be expanded)
-//   const skillData = {
-//       'Python': {
-//           level: 90,
-//           description: 'Extensive experience with Python for data science, backend development, and automation. Proficient with libraries like Pandas, NumPy, and Flask.',
-//           projects: ['TimeFlex Trader', 'AgriProtech']
-//       },
-//       'JavaScript': {
-//           level: 85,
-//           description: 'Strong expertise in frontend JavaScript development. Experience with modern frameworks and ES6+ features.',
-//           projects: ['Portfolio', 'Weather App', 'To do App']
-//       },
-//       'React': {
-//           level: 82,
-//           description: 'Experience building complex user interfaces with React. Familiar with Redux, Context API, and React Hooks.',
-//           projects: ['Portfolio Website', 'Dashboard Application']
-//       },
-//       'C++':{
-//         level: 95,
-//         description: "Started coding journey with C++. Solved 200+ problems in leetcode",
-//         projects: ['Competitive coding']
-//       },
-//       'Java':{
-//         level: 40,
-//         description: "Learn java in my undergraduate. Learned about multithreading, concurrency , and data structures",
-//         projects: ['Weather App']
-//         },
-//       'PyTorch':{
-//         level: 80,
-//         description: "Experience with PyTorch for deep learning projects",
-//         projects: ['Image classification', 'Object detection']
-//       },
-//       'AWS':{
-//         level: 75,
-//         description: "Experience in EC2 instance, S3 bucket, and Lambda functions",
-//         projects: ['Portfolio backend Deployement', 'Apache Spark for Big Data in AWS']
-//       },
-//       'Git/Github':{
-//         level: 90,
-//         description: "Experience with Git for version control",
-//         projects: ['Portfolio']
-//         },
-//         'SQL':{
-//           level: 80,
-//           description: "Experience with SQL for database management",
-//           projects: ['Portfolio']
-//         },
-//         'Jenkins':{
-//           level: 80,
-//           description: "Experience with Jenkins for CI/CD pipeline",
-//           projects: ['Portfolio']
-//         }
-//   };
-  
-  
-//   hexItems.forEach(item => {
-//       const hexagon = item.querySelector('.hexagon');
-//       const skillName = item.querySelector('span').textContent;
-      
-//       hexagon.addEventListener('click', () => {
-//         // console.log(skillData[skillName])
-//           const skill = skillData[skillName] || {
-//               level: 85,
-//               description: 'Proficient in this technology with hands-on project experience.',
-//               projects: ['Various Projects']
-//           };
-
-//           console.log(skill);
-//           // Update popup content
-//           popupTitle.textContent = '';
-//           skillDescription.textContent = ''; 
-//           levelFill.style.animation = 'none'; // Reset animation
-//           levelFill.style.width = '0'; // Reset bar width
-//           projectsList.innerHTML = '';
-//           setTimeout(() => {
-//               popupTitle.textContent = skillName;
-//               skillDescription.textContent = skill.description; // Assign new content
-//               levelFill.style.animation = ''; // Re-enable animation
-//               levelFill.style.width = `${skill.level}%`;
-//               levelText.textContent = `${skill.level < 70 ? 'Intermediate' : 'Advanced'} (${skill.level}%)`;
-//               projectsList.innerHTML = '';
-//               skill.projects.forEach(project => {
-//                 const li = document.createElement('li');
-//                 li.textContent = project;
-//                 projectsList.appendChild(li);
-//             });
-//           }, 10);
-          
-//           skillPopup.classList.add('active');
-
-          
-//           // Trigger animation
-//           setTimeout(() => {
-//               levelFill.style.animation = 'fillBar 1.5s ease forwards';
-//           }, 300);
-
-        
-//       });
-//   });
-  
-//   // Close popup
-//   closePopup.addEventListener('click', () => {
-//       skillPopup.classList.remove('active');
-//   });
-  
-//   // Close popup when clicking outside
-//   skillPopup.addEventListener('click', (e) => {
-//       if (e.target === skillPopup) {
-//           skillPopup.classList.remove('active');
-//       }
-//   });
-// });
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
   const hexItems = document.querySelectorAll('.hexagon-item');
