@@ -833,3 +833,11 @@ document.addEventListener('DOMContentLoaded', function() {
             alert("Error submitting form. Please try again.");
         }
     });
+function openchatbot(){
+  const div = document.querySelector(".chatbot-interface")
+  if (div.style.display === "none" || div.style.display === "") {
+    div.style.display = "flex"; // You can use "flex", "grid", etc., depending on layout
+  } else {
+    div.style.display = "none";
+  }
+}
