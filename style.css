@@ -135,6 +135,9 @@ html{
   /* Nav items for large screens */
   .nav-btn.active a{
     color: cyan;
+
+  /* font-weight: bold; */
+  /* border-bottom: 2px solid #ff5722; */
   }
   .nav-items {
     display: flex;
@@ -1236,8 +1239,26 @@ area {
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
   display: none;
   flex-direction: column;
-  /* Ensure it stays above other content */
-  z-index: 1001;
+  z-index: 1001; /* Ensure it stays above other content */
+}
+
+.chatbot-interface.active {
+  display: flex;
+}
+
+.chat-input {
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  outline: none;
 }
 
 /* Responsive interface sizing */
@@ -1308,20 +1329,7 @@ area {
   align-self: flex-end;
 }
 
-.chat-input {
-  padding: 1rem;
-  display: flex;
-  gap: 0.5rem;
-  border-top: 1px solid #ddd;
-}
 
-.chat-input input {
-  flex: 1;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  outline: none;
-}
 
 .send-button {
   background: #2196F3;

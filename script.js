@@ -14,64 +14,6 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
 });
 
-// const particles = [];
-
-// // Particle class
-// class Particle {
-//   constructor(x, y, size, color, speedX, speedY) {
-//     this.x = x;
-//     this.y = y;
-//     this.size = size;
-//     this.color = color;
-//     this.speedX = speedX;
-//     this.speedY = speedY;
-//   }
-
-//   update() {
-//     this.x += this.speedX;
-//     this.y += this.speedY;
-//     this.size *= 0.95; // Gradually shrink
-//   }
-
-//   draw() {
-//     ctx.beginPath();
-//     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-//     ctx.fillStyle = this.color;
-//     ctx.fill();
-//   }
-// }
-
-// window.addEventListener('mousemove', (event) => {
-//   const { clientX: x, clientY: y } = event;
-//   for (let i = 0; i < 5; i++) {
-//     const size = Math.random() * 5 + 2;
-//     const color = `rgba(255, 255, 255, ${Math.random()})`;
-//     const speedX = (Math.random() - 0.5) * 2;
-//     const speedY = (Math.random() - 0.5) * 2;
-//     particles.push(new Particle(x, y, size, color, speedX, speedY));
-//   }
-// });
-
-
-// function animate() {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-//   for (let i = 0; i < particles.length; i++) {
-//     particles[i].update();
-//     particles[i].draw();
-
-//     // Remove particles that are too small
-//     if (particles[i].size < 0.5) {
-//       particles.splice(i, 1);
-//       i--;
-//     }
-//   }
-
-//   requestAnimationFrame(animate);
-// }
-
-// animate();
-
 const hamburger = document.getElementById('hamburger');
 const sideNav = document.getElementById('side-nav');
 const closeBtn = document.getElementById('close-btn');
@@ -107,6 +49,26 @@ navLinks.forEach(link => {
     document.body.style.overflow = 'auto'; // Enable scrolling again
   });
 });
+
+const sections = document.querySelectorAll('section');
+const activeNav = document.querySelectorAll('.nav-btn');
+
+function onScroll() {
+  let scrollPos = window.scrollY + window.innerHeight / 2; // middle of viewport
+
+  sections.forEach((section, index) => {
+    const top = section.offsetTop;
+    const bottom = top + section.offsetHeight;
+
+    if (scrollPos >= top && scrollPos < bottom) {
+      activeNav.forEach(link => link.classList.remove('active'));
+      activeNav[index].classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', onScroll);
+window.addEventListener('load', onScroll); // highlight on page load
 
 
 const words = ["AI Enthusiast" ,"Software Developer","Machine Learning Explorer" , "Problem Solver","Data Analyst", "Tech Enthusiast"];
@@ -160,6 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   elements.forEach(element => observer.observe(element));
 });
+
+
+
 function Submission(){
   alert("Recieved your message!!");
 }
@@ -330,6 +295,130 @@ window.addEventListener('resize', () => {
 setInterval(createRaindrop, 150);
 
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   const toggle = document.querySelector('.chatbot-toggle');
+//   const interface = document.querySelector('.chatbot-interface');
+//   const closeBtn = document.querySelector('.close-chat');
+//   const sendBtn = document.querySelector('.send-button');
+//   const input = document.querySelector('.chat-input input');
+//   const messages = document.querySelector('.chat-messages');
+
+//   // Toggle the chatbot interface on click
+//   toggle.addEventListener('click', () => {
+//       // Toggle visibility
+//       interface.style.display = interface.style.display === 'flex' ? 'none' : 'flex';
+//   });
+
+//   // Close the chatbot interface when the close button is clicked
+//   closeBtn.addEventListener('click', () => {
+//       interface.style.display = 'none';
+//   });
+
+//   sendBtn.addEventListener('click', sendMessage);
+//   input.addEventListener('keypress', (e) => {
+//       if (e.key === 'Enter') sendMessage();
+//   });
+
+//   // Send a message to the chatbot
+//   async function sendMessage() {
+//       const text = input.value.trim();
+//       if (!text) return;
+//       addMessage(text, 'user');
+//       input.value = '';
+//       const typingIndicator = addTypingIndicator();
+//       data = await getMockResponse(text);
+//       typingIndicator.remove();
+//       typeStreamingMessage(data, 'bot');
+//   }
+//   async function typeStreamingMessage(text, sender) {
+//     const messageDiv = document.createElement('div');
+//     messageDiv.className = `${sender}-message`;
+
+//     const content = document.createElement('div');
+//     content.className = 'message-content';
+//     messageDiv.appendChild(content);
+//     messages.appendChild(messageDiv);
+
+//     // Add the blinking cursor element to the message content
+//     const cursor = document.createElement('span');
+//     cursor.className = 'typing-cursor';
+//     content.appendChild(cursor);
+
+//     // Simulate typing effect (one character at a time)
+//     let index = 0;
+//     const typingSpeed = 30; // Adjust this value to make typing faster (lower is faster)
+
+//     function typeNextChar() {
+//         if (index < text.length) {
+//             content.textContent += text[index]; // Add one character at a time
+//             index++;
+
+//             // Scroll the messages to the bottom as we type
+//             messages.scrollTop = messages.scrollHeight;
+
+//             setTimeout(typeNextChar, typingSpeed); // Call next char after a shorter delay for faster typing
+//         } else {
+//             // Remove the cursor when typing is finished
+//             cursor.remove();
+//         }
+//     }
+
+//     typeNextChar(); // Start typing effect
+// }
+//   // Add typing indicator
+//   function addTypingIndicator() {
+//       const messageDiv = document.createElement('div');
+//       messageDiv.className = 'bot-message typing';
+
+//       const content = document.createElement('div');
+//       content.className = 'message-content';
+//       content.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+
+//       messageDiv.appendChild(content);
+//       messages.appendChild(messageDiv);
+//       messages.scrollTop = messages.scrollHeight;
+
+//       return messageDiv; // So we can remove it later
+//   }
+
+//   // Add the actual chat message
+//   function addMessage(text, sender, isTemporary = false) {
+//       const messageDiv = document.createElement('div');
+//       messageDiv.className = `${sender}-message`;
+
+//       const content = document.createElement('div');
+//       content.className = 'message-content';
+//       content.textContent = text;
+
+//       messageDiv.appendChild(content);
+//       messages.appendChild(messageDiv);
+//       messages.scrollTop = messages.scrollHeight;
+
+//       return isTemporary ? messageDiv : null;
+//   }
+
+//   // Mock response from the backend
+//   async function getMockResponse(input) {
+//       try {
+//           const response = await fetch('http://localhost:8000/generate', {
+//               method: 'POST',
+//               headers: {
+//                   'Content-Type': 'application/json',
+//               },
+//               body: JSON.stringify({ "user": input })
+//           });
+//           data = await response.json();
+//           return data.message;
+//       } catch (error) {
+//           return "Hitesh is working on me!! and will deploy me in a few days!!";
+//           console.error('Error:', error);
+//       }
+//   }
+// });
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.chatbot-toggle');
   const interface = document.querySelector('.chatbot-interface');
@@ -338,33 +427,119 @@ document.addEventListener('DOMContentLoaded', () => {
   const input = document.querySelector('.chat-input input');
   const messages = document.querySelector('.chat-messages');
 
-  // Toggle the chatbot interface on click
+  // Restore chat history from localStorage
+  function loadChatHistory() {
+    const history = JSON.parse(localStorage.getItem('chatHistory') || '[]');
+    messages.innerHTML = ''; // Clear current messages
+    history.forEach(({ sender, text }) => {
+      addMessage(text, sender);
+    });
+  }
+
+  // Save chat history to localStorage
+  function saveChatHistory() {
+    const allMessages = [...messages.querySelectorAll('.user-message, .bot-message')];
+    const history = allMessages.map(msgDiv => {
+      const sender = msgDiv.classList.contains('user-message') ? 'user' : 'bot';
+      const text = msgDiv.querySelector('.message-content').textContent;
+      return { sender, text };
+    });
+    localStorage.setItem('chatHistory', JSON.stringify(history));
+  }
+
+  // Utility: Read cookie by name
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  // On load, check if session-id cookie exists; if not, get from backend
+  async function ensureSessionCookie() {
+    if (!getCookie('session-id')) {
+      // Request any endpoint on backend to trigger cookie set (your FastAPI middleware sets it)
+      await fetch('http://localhost:8000/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user: 'hi' }), // initial dummy message to set cookie
+        credentials: 'include',  // important to allow cookies cross-origin (make sure backend CORS allows credentials)
+      });
+    }
+  }
+
+  // Toggle chatbot UI visibility
   toggle.addEventListener('click', () => {
-      // Toggle visibility
-      interface.style.display = interface.style.display === 'flex' ? 'none' : 'flex';
+    interface.style.display = interface.style.display === 'flex' ? 'none' : 'flex';
+    input.focus();
   });
 
-  // Close the chatbot interface when the close button is clicked
   closeBtn.addEventListener('click', () => {
-      interface.style.display = 'none';
+    interface.style.display = 'none';
   });
 
   sendBtn.addEventListener('click', sendMessage);
   input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendMessage();
+    if (e.key === 'Enter') sendMessage();
   });
 
-  // Send a message to the chatbot
   async function sendMessage() {
-      const text = input.value.trim();
-      if (!text) return;
-      addMessage(text, 'user');
-      input.value = '';
-      const typingIndicator = addTypingIndicator();
-      data = await getMockResponse(text);
-      typingIndicator.remove();
-      typeStreamingMessage(data, 'bot');
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    saveChatHistory();
+    input.value = '';
+
+    const typingIndicator = addTypingIndicator();
+    const response = await getBotResponse(text);
+    typingIndicator.remove();
+    await typeStreamingMessage(response, 'bot');
+    saveChatHistory();
   }
+
+  async function getBotResponse(userInput) {
+    try {
+      const response = await fetch('http://localhost:8000/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // important for cookie
+        body: JSON.stringify({ user: userInput }),
+      });
+      const data = await response.json();
+      return data.message;
+    } catch (error) {
+      console.error('Error:', error);
+      return "Hitesh is working on me!! and will deploy me in a few days!!";
+    }
+  }
+
+  function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `${sender}-message`;
+
+    const content = document.createElement('div');
+    content.className = 'message-content';
+    content.textContent = text;
+
+    messageDiv.appendChild(content);
+    messages.appendChild(messageDiv);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function addTypingIndicator() {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'bot-message typing';
+
+    const content = document.createElement('div');
+    content.className = 'message-content';
+    content.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
+
+    messageDiv.appendChild(content);
+    messages.appendChild(messageDiv);
+    messages.scrollTop = messages.scrollHeight;
+
+    return messageDiv;
+  }
+
   async function typeStreamingMessage(text, sender) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `${sender}-message`;
@@ -374,81 +549,36 @@ document.addEventListener('DOMContentLoaded', () => {
     messageDiv.appendChild(content);
     messages.appendChild(messageDiv);
 
-    // Add the blinking cursor element to the message content
+    // Add blinking cursor
     const cursor = document.createElement('span');
     cursor.className = 'typing-cursor';
     content.appendChild(cursor);
 
-    // Simulate typing effect (one character at a time)
     let index = 0;
-    const typingSpeed = 30; // Adjust this value to make typing faster (lower is faster)
+    const typingSpeed = 40;
 
-    function typeNextChar() {
+    return new Promise((resolve) => {
+      function typeNextChar() {
         if (index < text.length) {
-            content.textContent += text[index]; // Add one character at a time
-            index++;
-
-            // Scroll the messages to the bottom as we type
-            messages.scrollTop = messages.scrollHeight;
-
-            setTimeout(typeNextChar, typingSpeed); // Call next char after a shorter delay for faster typing
+          content.textContent += text[index];
+          index++;
+          messages.scrollTop = messages.scrollHeight;
+          setTimeout(typeNextChar, typingSpeed);
         } else {
-            // Remove the cursor when typing is finished
-            cursor.remove();
+          cursor.remove();
+          resolve();
         }
-    }
-
-    typeNextChar(); // Start typing effect
-}
-  // Add typing indicator
-  function addTypingIndicator() {
-      const messageDiv = document.createElement('div');
-      messageDiv.className = 'bot-message typing';
-
-      const content = document.createElement('div');
-      content.className = 'message-content';
-      content.innerHTML = `<span class="dot"></span><span class="dot"></span><span class="dot"></span>`;
-
-      messageDiv.appendChild(content);
-      messages.appendChild(messageDiv);
-      messages.scrollTop = messages.scrollHeight;
-
-      return messageDiv; // So we can remove it later
-  }
-
-  // Add the actual chat message
-  function addMessage(text, sender, isTemporary = false) {
-      const messageDiv = document.createElement('div');
-      messageDiv.className = `${sender}-message`;
-
-      const content = document.createElement('div');
-      content.className = 'message-content';
-      content.textContent = text;
-
-      messageDiv.appendChild(content);
-      messages.appendChild(messageDiv);
-      messages.scrollTop = messages.scrollHeight;
-
-      return isTemporary ? messageDiv : null;
-  }
-
-  // Mock response from the backend
-  async function getMockResponse(input) {
-      try {
-          const response = await fetch('http://localhost:8000/generate', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ "user": input })
-          });
-          data = await response.json();
-          return data.message;
-      } catch (error) {
-          return "Hitesh is working on me!! and will deploy me in a few days!!";
-          console.error('Error:', error);
       }
+      typeNextChar();
+    });
   }
+
+  // Initialize chatbot UI on page load
+  (async () => {
+    await ensureSessionCookie();
+    loadChatHistory();
+  })();
+
 });
 
 // function playTypingSound() {
