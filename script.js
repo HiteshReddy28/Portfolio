@@ -154,6 +154,9 @@ function openvisionnet(){
 function openweatherapp(){
   window.open("https://skyweathercast.netlify.app/");
 }
+function openTodo(){
+  window.open("https://github.com/HiteshReddy28/TodoApp")
+}
 function getGreeting() {
   const hour = new Date().getHours();
   return hour < 12 ? "Good Morning 🌞" :
