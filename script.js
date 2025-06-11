@@ -66,7 +66,9 @@ function onScroll() {
     }
   });
 }
-
+document.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+});
 window.addEventListener('scroll', onScroll);
 window.addEventListener('load', onScroll); // highlight on page load
 
