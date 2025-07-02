@@ -37,7 +37,18 @@
     <main id="content">
         <div class="container">
             <section id="home" class="section">
-                <!-- <div class="stars"></div> -->
+                <!-- Background animation elements -->
+                <div class="stars"></div>
+                <div class="twinkling"></div>
+                <div class="clouds"></div>
+                <div class="floating-elements">
+                    <div class="floating-element" data-speed="0.5"></div>
+                    <div class="floating-element" data-speed="0.8"></div>
+                    <div class="floating-element" data-speed="1.2"></div>
+                    <div class="floating-element" data-speed="0.6"></div>
+                    <div class="floating-element" data-speed="1.0"></div>
+                </div>
+                
                 <div class="navbar">
                     <div class="brand-logo">
                         <span id="brand_name">Hitesh Reddy</span>
@@ -85,10 +96,19 @@
         </section>
 
         <section id="about">
+            <!-- Background animation elements for about section -->
+            <div class="about-bg-elements">
+                <div class="bg-circle" data-speed="0.3"></div>
+                <div class="bg-circle" data-speed="0.6"></div>
+                <div class="bg-circle" data-speed="0.9"></div>
+                <div class="bg-square" data-speed="0.4"></div>
+                <div class="bg-square" data-speed="0.7"></div>
+            </div>
+            
             <div class="about-container">
                 <div class="aboutmecontent">
                     <h2 style="padding: 2rem;text-align: center;">Who am I?</h2>
-                    <p class="fade-in" style="color: aliceblue;"> I’m Hitesh Reddy, a student passionate about tech and problem-solving. I began with <span class="highlight">C++</span>, mastering <span class="highlight">OOP</span> and solving 200+ <span class="highlight">LeetCode problems</span>, which sharpened my skills in <span class="highlight">DSA</span>. I expanded into <span class="highlight">Python, SQL/NoSQL</span>, and tools like <span class="highlight">Pandas, NumPy, Tableau,</span> and <span class="highlight">Matplotlib</span> to turn data into insights. </p><br> <p class="fade-in" style="color: aliceblue;"> I explored <span class="highlight">web development</span> with <span class="highlight">HTML, CSS, JavaScript, React,</span> and <span class="highlight">Django</span>, building full-stack apps and using <span class="highlight">Git/GitHub</span> for collaboration. Currently, I’m interning in the field of <span class="highlight">Generative AI</span>, where I work on <span class="highlight">large language models</span>, <span class="highlight">prompt engineering</span>, and building intelligent systems that generate human-like content and solve real-world tasks. </p><br> <p class="fade-in" style="color: aliceblue;"> Alongside this, I’m deepening my expertise in <span class="highlight">machine learning</span> using <span class="highlight">TensorFlow, Keras, Scikit-learn,</span> and <span class="highlight">PyTorch</span>. I’m driven by <span class="highlight">continuous learning</span> and a passion for building <span class="highlight">impactful, AI-powered solutions</span> as I work toward a <span class="highlight">software or data-focused role</span>. </p>
+                    <p class="fade-in" style="color: aliceblue;"> I'm Hitesh Reddy, a student passionate about tech and problem-solving. I began with <span class="highlight">C++</span>, mastering <span class="highlight">OOP</span> and solving 200+ <span class="highlight">LeetCode problems</span>, which sharpened my skills in <span class="highlight">DSA</span>. I expanded into <span class="highlight">Python, SQL/NoSQL</span>, and tools like <span class="highlight">Pandas, NumPy, Tableau,</span> and <span class="highlight">Matplotlib</span> to turn data into insights. </p><br> <p class="fade-in" style="color: aliceblue;"> I explored <span class="highlight">web development</span> with <span class="highlight">HTML, CSS, JavaScript, React,</span> and <span class="highlight">Django</span>, building full-stack apps and using <span class="highlight">Git/GitHub</span> for collaboration. Currently, I'm interning in the field of <span class="highlight">Generative AI</span>, where I work on <span class="highlight">large language models</span>, <span class="highlight">prompt engineering</span>, and building intelligent systems that generate human-like content and solve real-world tasks. </p><br> <p class="fade-in" style="color: aliceblue;"> Alongside this, I'm deepening my expertise in <span class="highlight">machine learning</span> using <span class="highlight">TensorFlow, Keras, Scikit-learn,</span> and <span class="highlight">PyTorch</span>. I'm driven by <span class="highlight">continuous learning</span> and a passion for building <span class="highlight">impactful, AI-powered solutions</span> as I work toward a <span class="highlight">software or data-focused role</span>. </p>
                 </div>
                 <div class="profilepic">
                     <img src="assets/Hitesh_reddy.jpg" alt="Profile Picture" class="profilepic">
@@ -111,14 +131,14 @@
                             <p class="display-before">
                                 As part of my role at Cognute, I am responsible for developing a customer support chatbot using Llama 3.3, an advanced language model. The project aimed to improve customer service efficiency by automating responses to customer asked questions, resolving issues, and escalating complex queries.
                             </p>
-                            <div class="description">
+                            <!-- <div class="description">
                                 <ul>
                                     <li><strong>Conducted</strong> an in-depth analysis of customer queries and tailored <strong>chatbot responses</strong> to address the most common issues.</li>
                                     <li><strong>Created</strong> and iterated on <strong>prompts</strong>, refining the chatbot's ability to provide <strong>accurate</strong>, <strong>context-aware</strong> responses across a wide range of topics.</li>
                                     <li>Skills: <strong>Llama 3.3</strong>, <strong>Python</strong>, <strong>APIs</strong>, <strong>A/B Testing</strong>, <strong>NLP Techniques</strong>, <strong>Reinforcement Learning</strong>.</li>
                                 </ul>
                                 
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     </div>
@@ -136,14 +156,14 @@
                             <p class="display-before">
                                 I moved from India to the U.S. to pursue my Computer Science degree at NJIT, driven by a passion for technology and innovation. With a 4.0 GPA, I've honed my skills through projects like TimeFlex, Image Classification, and coursework in Machine Learning, Big Data, and Operating Systems.
                             </p>
-                            <div class="description">
+                            <!-- <div class="description">
                                 <ul>
                                     <li><strong>Machine Learning & AI:</strong> Gained expertise in <strong>CNNs</strong>, <strong>RNNs</strong>, and <strong>Transformers</strong>, and worked on <strong>AI-driven financial automation</strong> (CrewAI, session-based memory).</li>
                                     <li><strong>Data & Cloud:</strong> Worked with <strong>Hadoop</strong>, <strong>Spark</strong>, and <strong>AWS</strong> to process large datasets and optimize cloud-based solutions.</li>
                                     <li><strong>Full-Stack & Data Analysis:</strong> Mastered <strong>MERN stack</strong>, <strong>REST APIs</strong>, and <strong>cloud deployment</strong>, while enhancing data analysis skills with <strong>Sparklyr</strong>, <strong>Python</strong>, and <strong>R</strong>.</li>
                                 </ul>
                                 
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     </div>
@@ -161,13 +181,13 @@
                             <p class="display-before">
                                 I contributed to SNIST's ECA Coding Contest platform by developing both the frontend and backend. Using React for the UI and Django for the backend, I created a seamless, user-friendly interface. The system efficiently handled registrations, submissions, and results processing.
                             </p>
-                            <div class="description">
+                            <!-- <div class="description">
                                 <ul>
                                     <li>Developed the <strong>SNIST ECA Coding Contest platform</strong> using <strong>React</strong> for frontend and <strong>Django REST Framework</strong> for backend APIs.</li>
                                     <li>Implemented <strong>user authentication</strong> using <strong>JWT tokens</strong> and designed <strong>PostgreSQL database models</strong> to manage participant data and contest results.</li>
                                     <li>Enabled <strong>real-time contest updates</strong> for seamless user interaction.</li>
                                 </ul>                                
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     </div>
@@ -201,7 +221,7 @@
                             <p class="display-before">
                                 I volunteered for 3 years in the Robotics Club at SNIST, serving as a Technical Coordinator and eventually the Technical Head for the Roboved fest. I contributed to organizing the event, raising funds, and guiding 7 members in building their first robot. Our efforts led to a successful event that fostered technical learning and hands-on experience for participants.
                             </p>
-                            <div class="description">
+                            <!-- <div class="description">
                                 <ul>
                                     <li><strong>3-year volunteer role</strong> in the <strong>Robotics Club</strong> at SNIST.</li>
                                     <li>Honed <strong>leadership</strong>, <strong>organizational</strong>, and <strong>fundraising</strong> skills as the <strong>Technical Head</strong> for the <strong>Roboved fest</strong>.</li>
@@ -210,7 +230,7 @@
                                     <li>Enhanced my ability to <strong>lead teams</strong> and execute <strong>large-scale technical projects</strong>.</li>
                                 </ul>
                                 
-                            </div>
+                            </div> -->
                         </div>
                     </div></div>
                 </div>
@@ -227,13 +247,13 @@
                             <p class="display-before">
                                 I completed my Bachelor's degree in Computer Science from Sreenidhi Institute of Science and Technology with a CGPA of 8.73/10. In addition, I served as a class representative for 2.5 years, collaborating with professors to manage academic activities and address student concerns.
                             </p>
-                            <div class="description">
+                            <!-- <div class="description">
                                 <ul>
                                     <li>Gained practical experience in <strong>programming</strong>, <strong>data structures</strong>, <strong>algorithms</strong>, and <strong>web development</strong> through my <strong>Bachelor's in Computer Science</strong>.</li>
                                     <li>Developed <strong>project management</strong> and <strong>leadership skills</strong> while working on <strong>team-based technical projects</strong>.</li>
                                 </ul>
                                 
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     </div>
@@ -241,6 +261,12 @@
             </div>
         </section>
         <section id="projects">
+            <!-- Floating orbs for background animation -->
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            
             <h1 class="section-title">Featured Projects</h1>
 
             <div class="category-container">
@@ -833,10 +859,7 @@ transactions and sellers to manage incoming orders, demonstrating proficiency wi
           </div>
         </div>
       </footer>
-      <audio id="typingSound" preload="auto">
-        <source src="./assets/typing.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>         
+               
     <script src="script.js"></script>
 </body>
 </html>
