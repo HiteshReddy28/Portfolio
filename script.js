@@ -463,7 +463,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function ensureSessionCookie() {
     if (!getCookie('session-id')) {
       // Request any endpoint on backend to trigger cookie set (your FastAPI middleware sets it)
-      await fetch('http://localhost:8000/generate', {
+      await fetch('  https://4xawa6q91c.execute-api.us-east-2.amazonaws.com/default/HARIS/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user: 'hi' }), // initial dummy message to set cookie
@@ -503,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function getBotResponse(userInput) {
     try {
-      const response = await fetch('http://localhost:8000/generate', {
+      const response = await fetch('  https://4xawa6q91c.execute-api.us-east-2.amazonaws.com/default/HARIS/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // important for cookie
@@ -1693,8 +1693,8 @@ function ensureProfilePictureLoaded() {
     return;
   }
   
-  console.log('Profile image element found:', profileImg);
-  console.log('Image src:', profileImg.src);
+  // console.log('Profile image element found:', profileImg);
+  // console.log('Image src:', profileImg.src);
   
   // Add loading animation
   profileImg.style.opacity = '0';
@@ -1702,16 +1702,16 @@ function ensureProfilePictureLoaded() {
   
   // Check if image is already loaded
   if (profileImg.complete && profileImg.naturalHeight !== 0) {
-    console.log('Image already loaded');
+    // console.log('Image already loaded');
     profileImg.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
     profileImg.style.opacity = '1';
     profileImg.style.transform = 'scale(1)';
   } else {
-    console.log('Image not loaded yet, waiting for load event');
+    // console.log('Image not loaded yet, waiting for load event');
   }
   
   profileImg.onload = function() {
-    console.log('Image loaded successfully!');
+    // console.log('Image loaded successfully!');
     profileImg.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
     profileImg.style.opacity = '1';
     profileImg.style.transform = 'scale(1)';
@@ -1772,44 +1772,44 @@ function ensureProfilePictureLoaded() {
 
 // Debug interactive elements
 function debugInteractiveElements() {
-  console.log('Debugging interactive elements...');
+  // console.log('Debugging interactive elements...');
   
   // Check navbar
   const navbar = document.querySelector('.navbar');
   if (navbar) {
-    console.log('Navbar found, z-index:', getComputedStyle(navbar).zIndex);
+    // console.log('Navbar found, z-index:', getComputedStyle(navbar).zIndex);
   } else {
     console.error('Navbar not found!');
   }
   
   // Check buttons
   const buttons = document.querySelectorAll('.bot');
-  console.log('Found', buttons.length, 'buttons');
+  // console.log('Found', buttons.length, 'buttons');
   buttons.forEach((btn, index) => {
-    console.log(`Button ${index + 1}:`, btn.textContent, 'z-index:', getComputedStyle(btn).zIndex);
+    // console.log(`Button ${index + 1}:`, btn.textContent, 'z-index:', getComputedStyle(btn).zIndex);
   });
   
   // Check nav items
   const navItems = document.querySelectorAll('.nav-items a');
-  console.log('Found', navItems.length, 'nav items');
+  // console.log('Found', navItems.length, 'nav items');
   navItems.forEach((item, index) => {
-    console.log(`Nav item ${index + 1}:`, item.textContent, 'z-index:', getComputedStyle(item).zIndex);
+    // console.log(`Nav item ${index + 1}:`, item.textContent, 'z-index:', getComputedStyle(item).zIndex);
   });
   
   // Check profile picture
   const profilePic = document.querySelector('.profilepic');
   if (profilePic) {
-    console.log('Profile picture container found, z-index:', getComputedStyle(profilePic).zIndex);
+    // console.log('Profile picture container found, z-index:', getComputedStyle(profilePic).zIndex);
   } else {
-    console.error('Profile picture container not found!');
+    // console.error('Profile picture container not found!');
   }
   
   // Check profile image
   const profileImg = document.querySelector('.profilepic img');
   if (profileImg) {
-    console.log('Profile image found, z-index:', getComputedStyle(profileImg).zIndex);
-    console.log('Image src:', profileImg.src);
-    console.log('Image natural dimensions:', profileImg.naturalWidth, 'x', profileImg.naturalHeight);
+    // console.log('Profile image found, z-index:', getComputedStyle(profileImg).zIndex);
+    // console.log('Image src:', profileImg.src);
+    // console.log('Image natural dimensions:', profileImg.naturalWidth, 'x', profileImg.naturalHeight);
   } else {
     console.error('Profile image not found!');
   }
@@ -1817,7 +1817,7 @@ function debugInteractiveElements() {
 
 // Enhanced initialization with debugging
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, initializing...');
+  // console.log('DOM loaded, initializing...');
   
   // Initialize scroll animations
   initializeScrollAnimations();
@@ -1853,16 +1853,16 @@ document.addEventListener('DOMContentLoaded', function() {
       profileImg.style.opacity = '1';
       profileImg.style.transform = 'scale(1)';
       profileImg.style.display = 'block';
-      console.log('Forced profile image to be visible');
+      // console.log('Forced profile image to be visible');
     }
   }, 2000);
 });
 
 // Enhanced click debugging
 document.addEventListener('click', function(e) {
-  console.log('Click detected on:', e.target);
-  console.log('Element z-index:', getComputedStyle(e.target).zIndex);
-  console.log('Element pointer-events:', getComputedStyle(e.target).pointerEvents);
+  // console.log('Click detected on:', e.target);
+  // console.log('Element z-index:', getComputedStyle(e.target).zIndex);
+  // console.log('Element pointer-events:', getComputedStyle(e.target).pointerEvents);
 });
 
 // Check for overlapping elements
@@ -1871,11 +1871,11 @@ function checkOverlappingElements() {
   
   interactiveElements.forEach(element => {
     const rect = element.getBoundingClientRect();
-    console.log('Element:', element.tagName, element.className);
-    console.log('Position:', rect.left, rect.top, rect.width, rect.height);
-    console.log('Z-index:', getComputedStyle(element).zIndex);
-    console.log('Pointer events:', getComputedStyle(element).pointerEvents);
-    console.log('---');
+    // console.log('Element:', element.tagName, element.className);
+    // console.log('Position:', rect.left, rect.top, rect.width, rect.height);
+    // console.log('Z-index:', getComputedStyle(element).zIndex);
+    // console.log('Pointer events:', getComputedStyle(element).pointerEvents);
+    // console.log('---');
   });
 }
 
