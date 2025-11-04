@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://portfolio-hiteshreddy28.vercel.app/sitemap.xml
