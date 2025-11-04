@@ -130,6 +130,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function Submission(){
   alert("Recieved your message!!");
 }
+function openRagProject(){
+  window.open("https://github.com/HiteshReddy28/RAG");
+}
 function openresume(){
   window.open("./assets/Hitesh_Reddy.pdf" );
 }

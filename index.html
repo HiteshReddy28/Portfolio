@@ -411,7 +411,30 @@
                 <button class="filter-btn" data-filter="data">Analysis</button>
             </div>
             <div class="project-container">
+                 <!-- USCIS RAG Assistant -->
                  <div class="fade-in">
+                    <div class="project-card" onclick="openRagProject()" data-category="ai,ml">
+                        <div class="image-container">
+                            <img src="./assets/rag_usics.jpg" alt="ImmigraGuide preview" loading="lazy">
+                            <h3 class="project-name">ImmigraGuide</h3>
+                            <div class="overlay">
+                                <span class="project-title">ImmigraGuide — USCIS RAG Assistant</span>
+                            </div>
+                        </div>
+
+                        <!-- Project Details -->
+                        <div class="project-info">
+                            <ul class="fade-in">
+                                <li>Implemented a <span class="highlight">RAG</span> pipeline: crawled and structured the <span class="highlight">USCIS</span> website, then generated concise summaries with an <span class="highlight">LLM</span>.</li>
+                                <li>Converted summaries to vectors and indexed them in <span class="highlight">Pinecone</span> to enable fast <span class="highlight">semantic retrieval</span>.</li>
+                                <li>Built a chatbot that retrieves top chunks at query-time and returns <span class="highlight">precise, source-backed</span> answers to user questions.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="fade-in">
                     <div class="project-card" onclick="" data-category="ai,web,ml,data">
                         <div class="image-container">
                             <img src="./assets/cognute.JPG" alt="Uploading soon....">
@@ -424,16 +447,9 @@
                         <!-- Project Details with Bullet Points -->
                         <div class="project-info">
                             <ul class="fade-in">
-                                <li>Developed and deployed an LLM-powered AI assistant using LLaMA 3.3, with custom function calling and
-multi-agent workflows via LangGraph to enable dynamic, context-aware conversations.</li>
-                                <li>Performed advanced prompt engineering to refine model behavior across diverse inputs, reducing hallucination and
-improving response consistency and relevance.</li>
-                                <li>Designed and executed structured model evaluations using DeepEval, measuring precision, recall, hallucination
-rate, and bias; automated test cases integrated into CI pipelines.</li>
-                                <li>Conducted functional, performance, and ethical testing (latency, fairness, toxicity), validating inference outcomes,
-preprocessing logic, and end-to-end reproducibility</li>
-<li>Collaborated with data scientists to define AI feature acceptance criteria, and containerized services with FastAPI,
-PostgreSQL, and Docker Compose for scalable deployment.</li>
+                                <li>Built an <span class="highlight">LLM assistant (LLaMA 3.3)</span> with custom function-calling and <span class="highlight">LangGraph</span> multi-agent workflows for context-aware conversations.</li>
+                                <li>Performed <span class="highlight">prompt engineering</span> and automated evaluations (DeepEval) to reduce hallucinations and measure <span class="highlight">precision/recall</span> and bias.</li>
+                                <li>Containerized the production stack (<span class="highlight">FastAPI</span>, <span class="highlight">PostgreSQL</span>, <span class="highlight">Docker Compose</span>) and collaborated on acceptance, performance, and ethical testing.</li>
                             </ul>
                         </div>
 
